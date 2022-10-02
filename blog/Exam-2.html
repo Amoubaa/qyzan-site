@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>qyzan-site</title>
+    <link rel="icon" type="image/x-icon" href="assets/user-secret-solid.svg" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
+  <body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <div class="container px-4">
+        <a class="navbar-brand" href="#page-top">Khairul</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header-->
+    <header class="bg-dark bg-gradient text-white">
+      <div class="container px-4 text-center">
+        <h1 class="fw-bolder">Install Wordpress Dengan Database Terpisah (Two Mechine)</h1>
+        <p class="lead">Let's see what I'm working on</p>
+        <a class="btn btn-lg btn-warning" href="#about">Start scrolling!</a>
+        <h1 class="fw-bolder" style="height: 30px;"></h1>
+      </div>
+    </header>
+    <!-- About section-->
+    <section id="about">
+      <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+          <div class="col-lg-8">
+            <h2>Daftar Isi</h2>
+            <ol type="1">
+              <li>Setup Server</li>
+              <li>Topologi</li>
+              <li>Prosedur Package Server</li>
+              <li>Konfigurasi Server</li>
+              <li>Konfigurasi Database</li>
+              <li>Pembuatan Database</li>
+              <li>Instalasi Wordpress</li>
+              <li>Kesimpulan</li>
+              <li>Daftar Pustaka</li>
+            </ol>
+            <h2 style="height: 12px"></h2>
+            <h2>1. Setup Perangkat Lunak</h2>
+            <p class="lead">Butuh beberapa resource untuk menginstall wordpress di ubuntu server</p>
+            <ul>
+              <li>
+                Ubuntu Server
+                <a href="https://releases.ubuntu.com/22.04.1/ubuntu-22.04.1-live-server-amd64.iso" target="_blank"
+                  >Coba Klik</a
+                >
+              </li>
+              <li>
+                Virtual Mechine
+                <a
+                  href="https://download.virtualbox.org/virtualbox/6.1.38/VirtualBox-6.1.38-153438-Win.exe"
+                  target="_blank"
+                  >Coba Klik</a
+                >
+              </li>
+              <li>Wordpress <a href="https://wordpress.org/latest.zip">Coba Klik</a></li>
+            </ul>
+            <p class="lead">Install Server Di Virtual Mechine</p>
+            <ul>
+              <li>Download resource di atas dan install Virtual Mechine seperti menginstall App di Windows</li>
+              <li>Buka Virtual Mechine dan klik New lalu masukkan file iso dari Ubuntu Servernya</li>
+              <li>Dan Virtual Mechine akan secara otomatis langsung masuk ke penginstallan Server Ubuntunya</li>
+              <li>Ikuti semua intruksi saat setup mesin ubuntunya</li>
+
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>System</th>
+                    <th>Spesifikasi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th rowspan="6">Web &amp; Database Server</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      System :
+                      <ul>
+                        <li>Base Memory : 1024 MB</li>
+                        <li>Boot Order : Floppy Optical, Hard Disk</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Display :
+                      <ul>
+                        <li>Video Memory : 16 MB</li>
+                        <li>Graphics Controller : VMSVGA</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Storage :
+                      <ul>
+                        <li>SATA : 10 GB</li>
+                        <li>IDE : Optical Drive</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Network :
+                      <ul>
+                        <li>Adabter 1 : NAT</li>
+                        <li>Adabter 2 : Host-Only</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      IP Address :
+                      <ul>
+                        <li>
+                          Web server :
+                          <ul>
+                            <li>10.0.2.15 (NAT)</li>
+                            <li>192.168.56.8 (Host-Only)</li>
+                          </ul>
+                        </li>
+                        <li>
+                          Database Server :
+                          <ul>
+                            <li>10.0.2.15 (NAT)</li>
+                            <li>192.168.56.11 (Host-Only)</li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </ul>
+
+            <h2 style="height: 12px"></h2>
+            <h2>2. Topologi</h2>
+            <p class="lead">
+              Untuk Topologinya Dapat di gambarkan seperti di bawah ini; <br>
+              <img
+                src="images/prakt2/topologi.png"
+                width="400"
+                height="450"
+                class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                alt=""
+              />
+            </p>
+            <h2 style="height: 12px"></h2>
+            <h2>3. Prosedur Package Server</h2>
+            <p class="lead">
+              Untuk Menginstall Wordpress dengan Database terpisah kita memerlukan beberpa package yang perlu di install
+              di masing-masing mesin. <br />
+            </p>
+            <ul>
+              <li>Package Web Server</li>
+              <ul>
+                <p>Package Untuk Web Server;</p>
+                <li>Apache2;</li>
+                <p>
+                  Command line; <br />
+                  <span style="font-weight: bold">sudo apt install apache2</span> <br />
+                  <img
+                    src="images/prakt2/apache2.png"
+                    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                    width="400"
+                    height="450"
+                    alt="Install Apache2"
+                  />
+                </p>
+                <li>PHP</li>
+                <p>
+                  Command line; <br />
+                  <span style="font-weight: bold">sudo apt install php libapache2-mod-php php-mysql</span> <br />
+                  <img
+                    src="images/prakt2/php.png"
+                    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                    width="400"
+                    height="450"
+                    alt=""
+                  />
+                  <br />
+                  Sekarang setelah menginstal PHP, penting untuk menginstal ekstensi tambahan ini yang diperlukan /
+                  berguna bagi WordPress untuk beroperasi dalam bentuk terbaiknya ; <br />
+                  Command line; <br /><span style="font-weight: bold"
+                    >sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip</span
+                  ><br />
+                  <img
+                    src="images/prakt2/extensiphp.png"
+                    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                    width="400"
+                    height="450"
+                    alt=""
+                  />
+                </p>
+                <li>Mysql Client</li>
+                <p>
+                  Packages mysql-client digunakan untuk mengakses database dari server databases; <br />
+                  Command line ; <br />
+                  <span style="font-weight: bold">sudo apt install mysql-client</span> <br />
+                  <img
+                    src="images/prakt2/mysql-client.png"
+                    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                    width="400"
+                    height="450"
+                    alt=""
+                  />
+                </p>
+                <li>File Wordpress</li>
+                <p>
+                  Command line; <br />
+                  <span style="font-weight: bold">cd /tmp && wget https://wordpress.org/latest.tar.gz</span> <br />
+                  <img
+                    src="images/prakt2/file_wordpress.png"
+                    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                    width="400"
+                    height="450"
+                    alt=""
+                  />
+                </p>
+              </ul>
+            </ul>
+            <ul>
+              <li>Package Untuk Database</li>
+              <ul>
+                <p>Packages untuk database server;</p>
+                <li>Mysql Server</li>
+                <p>
+                  Command line;<br /><span style="font-weight: bold">sudo nano mysql-server</span> <br />
+                  <img
+                    src="images/prakt2/mysql-server.png"
+                    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                    width="400"
+                    height="450"
+                    alt=""
+                  />
+                </p>
+              </ul>
+            </ul>
+            <h2 style="height: 12px"></h2>
+            <h2>4. Configurasi Server</h2>
+            <ul>
+              <li>
+                Configurasi IP <br />
+                <p>
+                  Untuk bisa terhubung database dari database server ke web server kita perlu mengatur IP statik di
+                  kedua VM
+                </p>
+                <ul>
+                  <li>Web Server</li>
+                  <p>
+                    Command line; <br /><span style="font-weight: bold"
+                      >sudo nano /etc/netplan/00-installer-config.yaml</span
+                    >
+                    <br />
+                    <img
+                      src="images/prakt2/ip_webserver.png"
+                      class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                      width="400"
+                      height="450"
+                      alt=""
+                    />
+                  </p>
+                  <li>Database Server</li>
+                  <p>
+                    Command line; <br /><span style="font-weight: bold"
+                      >sudo nano /etc/netplan/00-installer-config.yaml</span
+                    >
+                    <br />
+                    <img
+                      src="images/prakt2/ip_database.png"
+                      class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                      width="400"
+                      height="450"
+                      alt=""
+                    />
+                  </p>
+                </ul>
+              </li>
+              <li>Configurasi Firewall</li>
+              <ul>
+                <li>Untuk bisa mengakses ke database servernya kita perlu mengaktifkan port mysql di web server;</li>
+                <p>
+                  Command line; <br /><span style="font-weight: bold"
+                    >sudo ufw allow mysql” or “sudo ufw allow 3306</span
+                  >
+                  <br />
+                  <img
+                    src="images/prakt2/allow_mysql.png"
+                    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                    width="400"
+                    height="450"
+                    alt=""
+                  />
+                </p>
+                <li>
+                  Untuk bisa mengakses web server dari luar kita perlu mengaktifkan port untuk apache nya atau port 80;
+                </li>
+                <p>
+                  Command line; <br /><span style="font-weight: bold">sudo ufw allow in ‘Apache2’</span> <br />or
+                  <br /><span style="font-weight: bold">sudo ufw allow 80</span> <br /><img
+                    src="images/prakt2/allow apache2.png"
+                    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                    alt=""
+                  />
+                </p>
+              </ul>
+              <li>Configurasi Wordpress</li>
+              <ul>
+                <li>Install Wordpress</li>
+                <p>Command line; <br /><span style="font-weight: bold">cd /tmp/ && tar -xvf latest.tar.gz</span></p>
+                <p>
+                  Copy file wordpressnya ke /var/www/html <br />Command line; <br /><span style="font-weight: bold"
+                    >cp -R wordpress /var/www/html</span
+                  >
+                </p>
+                <p>
+                  Membuat direktori uploads didalam direktori wp-content dan mengganti Ownershipnya <br />Command line;
+                  <br /><span style="font-weight: bold">mkdir /var/www/html/wordpress/wp-content/uploads</span>
+                  <br /><span style="font-weight: bold"
+                    >chown -R www-data:www-data /var/www/html/wordpress/wp-content/uploads</span
+                  >
+                  <br />
+                  <img
+                    src="images/prakt2/configurasi_folder.png"
+                    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                    width="400"
+                    height="450"
+                    alt=""
+                  />
+                </p>
+              </ul>
+            </ul>
+            <h2 style="height: 12px"></h2>
+            <h2>5. Configurasi Database</h2>
+            <p>
+              Kita perlu mengkonfigurasi secara manual dibagian file mysql nya; <br />Command line; <br /><span
+                style="font-weight: bold"
+                >sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf</span
+              >
+              <br />
+              atur ipnya jadi ip dari database yang sudah di atur secara statik (Host-Only) <br />
+              <img
+                src="images/prakt2/configurasi_database.png"
+                class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                width="400"
+                height="450"
+                alt=""
+              />
+            </p>
+            <h2 style="height: 12px"></h2>
+            <h2>6. Pembuatan Database</h2>
+            <ul>
+              <li>Create User Database wordpress1</li>
+              <p>
+                Command line; <br /><span style="font-weight: bold"
+                  >CREATE USER '{username}'@'{ip web server}' IDENTIFIED BY '{password}'; <br />
+                  GRANT ALL PRIVILEGES ON *.* TO '{username}'@'{ip web server}'; <br />
+                  FLUSH PRIVILEGES;
+                </span>
+                <br />
+                <img
+                  src="images/prakt2/create_user.png"
+                  class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                  width="400"
+                  height="450"
+                  alt=""
+                />
+              </p>
+              <li>Create Database wp1;</li>
+              <p>
+                Command line; <br /><span style="font-weight: bold">CREATE DATABASE website;</span> <br /><img
+                  src="images/prakt2/create_database.png"
+                  class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                  width="400"
+                  height="450"
+                  alt=""
+                />
+              </p>
+              <li>Connect Server Database dengan Webserver</li>
+              <p>
+                Command line; <br /><span style="font-weight: bold">mysql -u aii -h 192.168.56.11 -p</span> <br />
+                <img
+                  src="images/prakt2/connect_database.png"
+                  class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                  width="400"
+                  height="450"
+                  alt=""
+                />
+              </p>
+            </ul>
+            <h2 style="height: 12px"></h2>
+            <h2>7. Lakukan Installasi Wordpress</h2>
+            <ul>
+              <li>Masukkan ip dari web_server di browser;</li>
+              <p>Command line; <br /><span style="font-weight: bold">http://{ip_webserver}/{folder wordpress}</span></p>
+              <p> <span style="font-weight: bold;">wordpress1</span>
+              <br />
+                <img
+                  src="images/prakt2/wp1.png"
+                  class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                  width="400"
+                  height="450"
+                  alt=""
+                /><br>
+                <br /> <span style="font-weight: bold;">wordpress2</span>
+                <br>
+                <img
+                  src="images/prakt2/wp2.png"
+                  class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                  width="400"
+                  height="450"
+                  alt=""
+                /> <br>
+                <br /> <span style="font-weight: bold;">wordpress3</span>
+                <br />
+                <img
+                  src="images/prakt2/wp3.png"
+                  class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                  width="400"
+                  height="450"
+                  alt=""
+                />
+              </p>
+            </ul>
+            <h2 style="height: 12px"></h2>
+            <h2>8. Kesimpulan</h2>
+            <p>
+              Memisahkan WEB Server dan Database Server Mysql pada mesin server yang berbeda tentunya untuk meningkatkan
+              sisi keamanan data kita yang tersimpan di server database serta bertujuan agar pemakaian sumber daya (RAM,
+              CPU, I/O) terpisah, tidak saling membebani. Pemisahan server ini dapat dilakukan dengan mengkonfigurasi
+              MySQL agar dapat diakses secara remote.
+            </p>
+            <h2 style="height: 12px"></h2>
+            <h2>9. Daftar Pustaka</h2>
+            <ul>
+              <li>
+                <a href="https://nokenlab.blogspot.com/2021/03/menghubungkan-web-server-dan-database.html"
+                  >Menghubungkan WEB Server dan Database Server Yang Terpisah | Ubuntu Server 20.04 ~ NokenLab</a
+                >
+              </li>
+              <li>
+                <a href="https://www.digitalocean.com/community/tutorials/install-wordpress-on-ubuntu"
+                  >How to install WordPress on Ubuntu 18.04 | DigitalOcean</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+      <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; qyzan-site</p></div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
