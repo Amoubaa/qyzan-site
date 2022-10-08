@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>qyzan-site</title>
+    <link rel="icon" type="image/x-icon" href="assets/user-secret-solid.svg" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
+  <body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <div class="container px-4">
+        <a class="navbar-brand" href="#page-top">Khairul - 4332101010</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header-->
+    <header class="bg-dark bg-gradient text-white">
+      <div class="container px-4 text-center">
+        <h1 class="fw-bolder" style="height: 30px"></h1>
+        <h1 class="fw-bolder">Roles In Mysql</h1>
+        <p class="lead">Let's see what I'm working on</p>
+        <a class="btn btn-lg btn-warning" href="#about">Start scrolling!</a>
+        <h1 class="fw-bolder" style="height: 30px"></h1>
+      </div>
+    </header>
+    <!-- About section-->
+    <section id="about">
+      <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+          <div class="col-lg-8">
+            <h2 style="height: 12px"></h2>
+            <h2>Use Roles</h2>
+            <p>
+              Roles MySQL adalah kumpulan hak istimewa bernama. Seperti akun pengguna, peran dapat memiliki hak istimewa
+              yang diberikan kepada dan dicabut darinya.
+            </p>
+            <p>
+              Akun pengguna dapat diberikan role, yang memberikan kepada akun hak istimewa yang terkait dengan setiap
+              role. Hal ini memungkinkan penugasan serangkaian hak istimewa ke akun dan memberikan alternatif yang
+              nyaman untuk memberikan hak istimewa individu, baik untuk mengkonseptualisasikan penugasan hak istimewa
+              yang diinginkan dan menerapkannya.
+            </p>
+            <h2>Fundamental Access Control</h2>
+            <p>
+              Di bidang keamanan fisik dan keamanan informasi, kontrol akses (AC) adalah pembatasan selektif akses ke
+              suatu tempat atau sumber daya lain, sementara manajemen akses menjelaskan prosesnya. Tindakan mengakses
+              dapat berarti mengkonsumsi, memasukkan, atau menggunakan. Izin untuk mengakses sumber daya disebut
+              otorisasi. Kunci dan kredensial login adalah dua mekanisme analog dari kontrol akses.
+            </p>
+            <p>
+              Saya mendefinisikan konsep dasar kontrol akses: sistem perlindungan yang mendefinisikan spesifikasi
+              kontrol akses dan monitor referensi yang merupakan mekanisme penegakan akses sistem yang memberlakukan
+              spesifikasi ini. <br />
+              Access Control berdasarkan modelnya yaitu:
+            </p>
+            <h2 style="height: 12px"></h2>
+            <h2>1. Mandatory Access Control</h2>
+            <p>
+              Di MAC, pengguna tidak memiliki banyak kebebasan untuk menentukan siapa yang memiliki akses ke file
+              mereka. Misalnya, izin keamanan pengguna dan klasifikasi data (sebagai rahasia, rahasia, atau sangat
+              rahasia) digunakan sebagai label keamanan untuk menentukan tingkat kepercayaan. Contoh di MySQL: Ada 3
+              peran yang ada dalam sistem database MySQL, setiap peran memiliki hak istimewa yang telah ditentukan
+              sebelumnya yang diberikan oleh administrator, semakin tinggi levelnya, semakin mereka memperoleh hak
+              istimewa. Dalam hal ini, kita menggunakan level 3, mulai dari level tertinggi adalah level 1.
+            </p>
+            <h4>Prinsip Dasar MAC</h4>
+            <ul>
+              <li>
+                Privasi dan kerahasiaan sumber daya organisasi adalah yang terpenting. Tidak ada yang memiliki hak
+                default untuk mengakses atau mengedit data seseorang.
+              </li>
+              <li>Penyediaan akses dikelola secara terpusat.</li>
+              <li>
+                Setiap individu dan sumber daya dalam sistem memiliki label keamanan dengan klasifikasi dan kategorinya.
+              </li>
+            </ul>
+            <h4>Kapan Menggunakan MAC</h4>
+            <p>
+              Model kontrol akses ini banyak digunakan oleh organisasi pemerintah, militer, dan lembaga penegak hukum.
+              MAC digunakan oleh pemrintah AS untuk mengamankan informasi rahasia dan untuk mendukung kebijakan dan
+              aplikasi keamnan bertingkat. Untuk perlindungan dan kepatuhan data yang lebih baik di industry asuransi
+              dan bidang perbankan, organisasi menggunakan MAC untuk mengontrol akses ke data akun pelanggan. Model
+              kontrol akses non-discretionary ini juga dapat melindungi akses ke database, di mana prosedur, tabel,
+              tampilan, dan elemen lainnya akan menjadi objek.
+            </p>
+            <h2 style="height: 12px"></h2>
+            <h2>2. Discretionary Access Control</h2>
+            <p>
+              Di DAC, pemilik data menentukan siapa yang dapat mengakses sumber daya tertentu. Misalnya, administrator
+              sistem dapat membuat hierarki file yang akan diakses berdasarkan izin tertentu. Contoh di MySQL: Seperti
+              yang dapat kita lihat, pemilik data di MySQL adalah administrator itu sendiri, jadi itu tergantung pada
+              administrator data mana yang dapat dibagikan. Ini sama seperti yang kami lakukan sebelumnya, kami
+              memberikan hak istimewa untuk peran yang ada di MySQL. Jika administrator ingin berbagi data, admin bisa
+              saja memberikan hak istimewa kepada beberapa peran atau pengguna.
+            </p>
+            <p>Dalam DAC, keamanan data dapat direpresentasikan bahwa:</p>
+            <p></p>
+            <ul>
+              <li>User dapat menjaga data yang mereka miliki</li>
+              <li>Owner dapat memberikan grant pada user lain</li>
+              <li>
+                Owner dapat memberikan definisi tipe akses yang akan diberikan pada user apakah akses tersebut berupa
+                read, write, execute.
+              </li>
+            </ul>
+            <h4>Kapan Menggunakan DAC</h4>
+            <p>
+              DAC tidak boleh digunakan oleh organisasi yang bekerja dengan data yang sangat sensitif (medis, keuangan,
+              militer, dll.) karena beberapa alasan:
+            </p>
+            <ul>
+              <li>
+                Jika pengguna 1 berbagi hak akses dengan pengguna 2, tidak ada jaminan bahwa pengguna 2 memerlukan akses
+                ini untuk bekerja, tidak akan mencuri atau merusak data dan tidak akan memberikan akses kepada pengguna
+                yang jahat.
+              </li>
+              <li>Tidak mungkin uyntuk mengontrol arus informasi di dalam jaringan.</li>
+              <li>
+                Tidak mungkin menegakkan prinsip-prinsip hak istimewa yang paling rendah, kebutuhan untuk mengetahui,
+                dan pemisah tugas.
+              </li>
+            </ul>
+            <p>
+              Pada saat yang sama, DAC adalah pilihan yang baik untuk usaha kecil dengan staf TI dan anggaran keamanan
+              siber yang terbatas. Hal ini memungkinkan untuk berbagi informasi dan memastikan kelancaran operasi
+              bisnis.
+            </p>
+
+            <h5>Kesimpulan :</h5>
+            <p>
+              Membandingkan MAC dan DAC , Saya melihat bahwa mereka adalah dua model kontrol akses yang berlawanan. MAC
+              dikendalikan oleh administrator dan membutuhkan banyak waktu dan upaya untuk memeliharanya, tetapi
+              menyediakan tingkat keamanan yang tinggi. DAC jauh lebih mudah untuk diterapkan dan dipelihara, karena
+              pengguna dapat mengelola akses ke data yang mereka miliki. Namun, DAC tidak cukup baik untuk melindungi
+              catatan sensitif.
+            </p>
+            <h2 style="height: 12px"></h2>
+            <h2>Implementasi ke Mysql</h2>
+            <p>
+              Implementasi access control di mysql dikenal dengan Data Control Language (DCL). Ialah perintah MySQL yang
+              digunakan untuk melakukan pengontrolan akses ke data dan server database. Berikut ini adalah beberapa
+              perintah DCL :
+            </p>
+            <ul>
+              <li>Grant</li>
+              <li>Revoke</li>
+            </ul>
+            <p>
+              Perintah Grant digunakan untuk memberikan hak akses khusus kepada user untuk melakukan aksi tertentu pada
+              object tertentu di database.
+              <br />Perintah Revoke digunakan untuk menarik kembali / mencabut / membatalkan hak akses khusus yang
+              sebelumnya telah diberikan melalui perintah Grant.
+            </p>
+            <h2>1. Fundamental Access Control</h2>
+            <p>
+              Dengan mengimplementasikan system access control terhadap user dengan pemberian hak akses terhadap user
+              tersebut. Anda telah melakukan implementasikan fundamental access control. Karena telah memastikan CIA
+              telah berjalan.
+            </p>
+            <h5>Implementasi :</h5>
+            <h2 style="height: 12px"></h2>
+
+            <h2>Mandatory Access Control (MAC)</h2>
+            <p>
+              Pada implememtasi MAC pada mysql, administrator dapat memberikan semua izin berdasarkan level dari object
+              tersebut. Namun tidak dapat memberikan hak GRANT OPTION . Karena hanya administrator yang dapat memberikan
+              izin kepada tiap user.
+            </p>
+            <h5>Implementasi :</h5>
+            <h2 style="height: 12px"></h2>
+            <h2>Discretionary Access Control (DAC)</h2>
+            <p>
+              Implementasi DAC pada mysql, user dapat diberi hak GRANT OPTION hal tersebut dilakukan untuk
+              fleksibilitas.
+            </p>
+            <h5>Implementasi :</h5>
+            <h2 style="height: 12px"></h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+      <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; qyzan-site</p></div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
